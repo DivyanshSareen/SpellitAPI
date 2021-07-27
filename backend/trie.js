@@ -57,7 +57,8 @@ function Trie(){
   };
 };
 
-const v = new Trie();
-v.insert("hello");
-v.insert("he");
-console.log(v.suggest("hel"));
+module.exports.Trie = Trie;
+// const v = new Trie();
+// v.insert("hello");
+// v.insert("he");
+// console.log(v.suggest("hel"));
