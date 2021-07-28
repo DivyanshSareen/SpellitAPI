@@ -34,14 +34,13 @@ function Trie(){
    for(var i = 0; i < 26; i++)
    {
      if(root.children[i])
-    return  String.fromCharCode(65+i) + this.find_words(root.children[i], word);
+    return  String.fromCharCode(97+i) + this.find_words(root.children[i], word);
    }
    return;
   };
   
   this.suggest = function(word){
     var curr_root = this.root;
-    const a = [];
     for(var i = 0; i < word.length; i++)
     { 
       if(curr_root.children[this.get_index(word[i])])
@@ -49,10 +48,11 @@ function Trie(){
       else break;
     }
     if(curr_root.check_isword() === true)
-      return [word];
+      return word;
     else
     {
-      return this.find_words(curr_root, word);
+      let res = this.find_words(curr_root, word);
+      return res.replace(undefined, "");
     }
   };
 };
