@@ -8,7 +8,8 @@ app.get('/', (req,res) => {
 
 app.get('/api/spell/:x',(req,res)=>{
     // res.send(req.params.x + " " + req.query.number);
-    res.send(spell.suggest(req.params.x));
+    var wor = spell.suggest(req.params.x)
+    res.send(wor);
 });
 
 const port = process.env.PORT || 3000;
