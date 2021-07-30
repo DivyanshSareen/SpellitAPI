@@ -7,6 +7,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+app.use(spell);
+
 app.get('/', (req,res) => {
     res.send('Try /api/spell{your word}');
 });
