@@ -7,16 +7,22 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use(spell);
+var midw = function(req,res,next) {
+  req.wid = spell.suggest(req.params.x);
+  next();
+}
 
 app.get('/', (req,res) => {
     res.send('Try /api/spell{your word}');
 });
 
+app.use('/api/spell/:x', midw);
+
 app.get('/api/spell/:x',(req,res)=>{
-    // res.send(req.params.x + " " + req.query.number);
-    var wor = spell.suggest(req.params.x)
-    res.send(wor);
+    // // res.send(req.params.x + " " + req.query.number);
+    // var wor = spell.suggest(req.params.x);
+    // res.send(wor);
+    res.send(req.wid);
 });
 
 const port = process.env.PORT || 3000;
