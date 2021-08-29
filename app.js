@@ -8,7 +8,7 @@ app.use(express.urlencoded({
 }));
 
 var midw = function(req,res,next) {
-  req.wid = spell.suggest(req.params.x);
+  res.send(spell.suggest(req.params.x));
   next();
 }
 
@@ -21,7 +21,7 @@ app.get('/api/spell/:x', midw,(req,res)=>{
     // // res.send(req.params.x + " " + req.query.number);
     // var wor = spell.suggest(req.params.x);
     // res.send(wor);
-    res.send(req.wid);
+    // res.send(req.wid);
 });
 
 const port = process.env.PORT || 3000;
