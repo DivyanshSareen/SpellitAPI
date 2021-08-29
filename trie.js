@@ -52,7 +52,8 @@ function Trie(){
     else
     {
       let res = this.find_words(curr_root, word);
-      return res.replace(undefined, "");
+      let r = res.replace(undefined, "")
+      return r;
     }
   };
 };
